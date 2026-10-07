@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour
 {
-    public float health;
+    public float maxHealth, currentHealth;
 }
