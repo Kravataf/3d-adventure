@@ -1240,12 +1240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa220ffc0801d3946b7b07b20af339a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  wishSpeed: 5
-  jumpForce: 7.5
-  groundAccel: 100
-  airAccel: 50
-  friction: 3
-  maxGroundSpeed: 4
+  wishSpeed: 7
+  jumpForce: 9
+  groundAccel: 60
+  airAccel: 180
+  friction: 6
+  maxGroundSpeed: 7
   maxAirSpeed: 0.2
   rb: {fileID: 2115694578}
   grounded: 0
