@@ -22,11 +22,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (
-            InputSystem.actions["Escape"].WasPressedThisFrame() || 
-            !Application.isFocused || 
-            (currentState == State.Focus && Cursor.lockState == CursorLockMode.None)
-            )
+        if (InputSystem.actions["Escape"].WasPressedThisFrame() || !Application.isFocused)
         {
             isPaused = true;
         }
