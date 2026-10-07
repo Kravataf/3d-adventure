@@ -12,11 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [HideInInspector] public float hSpeed => new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z).magnitude;
     [HideInInspector] public float vSpeed => rb.linearVelocity.y;
 
-    void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     void Update()
     {
         inputDir = InputSystem.actions["Move"].ReadValue<Vector2>();

@@ -16,6 +16,8 @@ public class PlayerCamera : MonoBehaviour
 
     private void Update()
     {
+        if (UIManager.instance.isPaused) return;
+        
         current = new Vector2(
             target.x + Mathf.DeltaAngle(target.x, body.localEulerAngles.y),
             -Mathf.DeltaAngle(0f, transform.localEulerAngles.x)
