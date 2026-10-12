@@ -718,7 +718,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 90
   orthographic: 0
@@ -2312,6 +2312,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1376569141}
   - component: {fileID: 1376569142}
+  - component: {fileID: 1376569143}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2354,6 +2355,21 @@ MonoBehaviour:
   panelPause: {fileID: 537665662}
   currentState: 0
   isPaused: 0
+--- !u!114 &1376569143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376569140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f57f4d3aa7f7741809be0b24cf5cb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Inventory
+  currentWeight: 0
+  maxWeight: 256
+  ui: {fileID: 1296363898}
 --- !u!1 &1400738266
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,7 +3682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   wishSpeed: 7
   jumpForce: 9
-  groundAccel: 60
+  groundAccel: 90
   airAccel: 180
   friction: 6
   maxGroundSpeed: 7
