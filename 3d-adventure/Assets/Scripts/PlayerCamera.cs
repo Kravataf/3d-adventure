@@ -17,7 +17,6 @@ public class PlayerCamera : MonoBehaviour
     private void Update()
     {
         if (UIManager.instance.isPaused || UIManager.instance.currentState != State.Focus || Cursor.lockState != CursorLockMode.Locked) return;
-        Debug.Log(Cursor.lockState);
 
         current = new Vector2(
             target.x + Mathf.DeltaAngle(target.x, body.localEulerAngles.y),
