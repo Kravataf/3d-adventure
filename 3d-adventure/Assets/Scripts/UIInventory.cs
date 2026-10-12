@@ -1,20 +1,22 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    [SerializeField] private GameObject itemSlot, itemList;
+    [SerializeField] private Button itemSlot, drop, equip;
+    [SerializeField] private GameObject itemList;
     [SerializeField] private TMP_Text currentWeight, itemName;
+
+    private void Awake()
+    {
+        drop.onClick.AddListener(() => ClickDrop());
+        equip.onClick.AddListener(() => ClickEquip());
+    }
 
     private void Update()
     {
         currentWeight.text = $"{Inventory.instance.currentWeight}/{Inventory.instance.maxWeight}kg";
-
-        /*
-        na selectovanie treba aby kazdy item slot mal ref / nieco na svoj item
-        nech mozem pouzivat tie itemy aj normalne (potom by mozno netrebalo ani
-        destroyovat vsetko kazdy update...)
-        */
     }
 
     public void Refresh()
@@ -23,16 +25,31 @@ public class UIInventory : MonoBehaviour
         {
             Destroy(c.gameObject);
         }
-        foreach (var i in Inventory.instance.inv)
+
+        for (int i = 0; i < Inventory.instance.inv.Count; i++)
         {
-            var iSlot = Instantiate(itemSlot, itemList.transform);
-            iSlot.GetComponentInChildren<TMP_Text>().text = $"{i.name} {i.weight}kg";
+            int index = i;
+            var slot = Instantiate(itemSlot, itemList.transform);
+            slot.GetComponentInChildren<TMP_Text>().text = $"{Inventory.instance.inv[i].name} {Inventory.instance.inv[i].weight}kg";
+            slot.onClick.AddListener(() => Inventory.instance.SelectItem(index));
         }
+
+        itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.selectedItem.name : "";
 
         Inventory.instance.currentWeight = 0;
         foreach (var i in Inventory.instance.inv)
         {
             Inventory.instance.currentWeight += i.weight;
         }
+    }
+
+    private void ClickDrop()
+    {
+        Inventory.instance.RemoveItemAt(Inventory.instance.selectedIndex);
+        Refresh();
+    }
+
+    private void ClickEquip()
+    {
     }
 }
