@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     public List<Item> inv = new();
+    public Item selected;
     public int currentWeight, maxWeight;
 
     [SerializeField] private UIInventory ui;

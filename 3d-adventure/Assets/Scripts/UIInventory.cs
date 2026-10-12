@@ -9,6 +9,12 @@ public class UIInventory : MonoBehaviour
     private void Update()
     {
         currentWeight.text = $"{Inventory.instance.currentWeight}/{Inventory.instance.maxWeight}kg";
+
+        /*
+        na selectovanie treba aby kazdy item slot mal ref / nieco na svoj item
+        nech mozem pouzivat tie itemy aj normalne (potom by mozno netrebalo ani
+        destroyovat vsetko kazdy update...)
+        */
     }
 
     public void Refresh()
@@ -19,9 +25,8 @@ public class UIInventory : MonoBehaviour
         }
         foreach (var i in Inventory.instance.inv)
         {
-            Instantiate(itemSlot, itemList.transform)
-            .GetComponentInChildren<TMP_Text>().text 
-            = $"{i.name} {i.weight}kg";
+            var iSlot = Instantiate(itemSlot, itemList.transform);
+            iSlot.GetComponentInChildren<TMP_Text>().text = $"{i.name} {i.weight}kg";
         }
 
         Inventory.instance.currentWeight = 0;
