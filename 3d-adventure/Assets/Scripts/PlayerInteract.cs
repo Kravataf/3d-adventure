@@ -22,10 +22,6 @@ public class PlayerInteract : MonoBehaviour
 
     public void DropItem()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(head.position, head.forward, out hit, 60f))
-        {
-            var i = Instantiate(itemDrop, hit.point, Quaternion.identity);
-        }
+        Instantiate(itemDrop, head.position, Quaternion.identity);
     }
 }
