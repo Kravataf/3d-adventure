@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (InputSystem.actions["Escape"].WasPressedThisFrame() || !Application.isFocused)
+        if (InputSystem.actions["Escape"].WasPressedThisFrame())
         {
             isPaused = true;
         }
@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
                     Cursor.lockState = CursorLockMode.None;
                 break;
             }
+
+            if (!Application.isFocused) Cursor.lockState = CursorLockMode.None;
         }
         else
         {
