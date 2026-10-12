@@ -28,6 +28,7 @@ public class Inventory : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public struct Item
 {
     public string name;
