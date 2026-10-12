@@ -22,6 +22,7 @@ public class PlayerInteract : MonoBehaviour
 
     public void DropItem()
     {
-        Instantiate(itemDrop, head.position, Quaternion.identity);
+        var item = Instantiate(itemDrop, head.position, Quaternion.identity);
+        item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
     }
 }

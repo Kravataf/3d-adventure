@@ -45,8 +45,10 @@ public class UIInventory : MonoBehaviour
 
     private void ClickDrop()
     {
-        Inventory.instance.RemoveItemAt(Inventory.instance.selectedIndex);
+        if (Inventory.instance.selectedIndex == -1) return;
+
         GameObject.Find("Player").GetComponent<PlayerInteract>().DropItem();
+        Inventory.instance.RemoveItemAt(Inventory.instance.selectedIndex);
         Refresh();
     }
 

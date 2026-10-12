@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    [SerializeField] private Item item;
+    public Item item;
 
     public void CollectItem()
     {
