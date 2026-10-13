@@ -6,7 +6,7 @@ public class UIInventory : MonoBehaviour
 {
     [SerializeField] private Button itemSlot, drop, equip;
     [SerializeField] private GameObject itemList;
-    [SerializeField] private TMP_Text currentWeight, itemName;
+    [SerializeField] private TMP_Text currentWeight, itemName, itemDescription;
 
     private void Awake()
     {
@@ -35,6 +35,7 @@ public class UIInventory : MonoBehaviour
         }
 
         itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].name : "";
+        itemDescription.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].description : "";
 
         Inventory.instance.currentWeight = 0;
         foreach (var i in Inventory.instance.inv)
@@ -46,7 +47,8 @@ public class UIInventory : MonoBehaviour
     private void ClickDrop()
     {
         if (Inventory.instance.selectedIndex == -1) return;
-        
+        if (Inventory.instance.inv.Count <= 0) return;
+
         GameObject.Find("Player").GetComponent<PlayerInteract>().DropItem();
         Inventory.instance.RemoveItemAt(Inventory.instance.selectedIndex);
         Refresh();

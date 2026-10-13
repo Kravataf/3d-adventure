@@ -106,8 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDrop
   item:
-    name: Placeholder name
-    weight: 8
+    name: Trash
+    weight: 1
+    description: This item is useless
 --- !u!65 &8796209004307934574
 BoxCollider:
   m_ObjectHideFlags: 0

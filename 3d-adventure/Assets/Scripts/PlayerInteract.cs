@@ -23,19 +23,17 @@ public class PlayerInteract : MonoBehaviour
 
     public void DropItem()
     {
+        Vector3 spawn;
         RaycastHit hit;
-        if (Physics.Raycast(head.position, head.forward, out hit, range / 2f, ~(1 << gameObject.layer)))
+        if (Physics.SphereCast(head.position, 0.3f, head.forward, out hit, range / 2f, ~(1 << gameObject.layer),QueryTriggerInteraction.Ignore))
         {
-            // treba nejako spravit nech hrac nevie clipovat tie itemy cez zem niekedy
-            // a mozno keby ich skor "hodil" smerom ako sa pozera nez spawnutie by to
-            // mohlo vyzerat lepsie
-            var item = Instantiate(itemDrop, hit.point, Quaternion.identity);
-            item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+            spawn = hit.point;
         }
         else
         {
-            var item = Instantiate(itemDrop, head.position + head.forward * range / 2f, Quaternion.identity);
-            item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+            spawn = head.position + head.forward * range / 2f;
         }
+        var item = Instantiate(itemDrop, spawn, Quaternion.identity);
+        item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
     }
 }

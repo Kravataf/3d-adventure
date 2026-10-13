@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public List<Item> inv = new();
     public int currentWeight, maxWeight;
 
-    [HideInInspector] public int selectedIndex;
+    [HideInInspector] public int selectedIndex = -1;
 
     [SerializeField] private UIInventory ui;
 
@@ -48,4 +48,5 @@ public struct Item
 {
     public string name;
     public int weight;
+    public string description;
 }
