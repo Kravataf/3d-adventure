@@ -26,6 +26,9 @@ public class PlayerInteract : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(head.position, head.forward, out hit, range / 2f, ~(1 << gameObject.layer)))
         {
+            // treba nejako spravit nech hrac nevie clipovat tie itemy cez zem niekedy
+            // a mozno keby ich skor "hodil" smerom ako sa pozera nez spawnutie by to
+            // mohlo vyzerat lepsie
             var item = Instantiate(itemDrop, hit.point, Quaternion.identity);
             item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
         }
