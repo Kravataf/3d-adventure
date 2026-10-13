@@ -56,5 +56,9 @@ public class UIInventory : MonoBehaviour
 
     private void ClickEquip()
     {
+        if (Inventory.instance.selectedIndex == -1) return;
+        if (Inventory.instance.inv.Count <= 0) return;
+
+        Inventory.instance.equippedIndex = Inventory.instance.selectedIndex;
     }
 }
