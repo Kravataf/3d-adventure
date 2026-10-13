@@ -9,7 +9,6 @@ public class Inventory : MonoBehaviour
     public int currentWeight, maxWeight;
 
     [HideInInspector] public int selectedIndex;
-    [HideInInspector] public Item selectedItem;
 
     [SerializeField] private UIInventory ui;
 
@@ -40,7 +39,6 @@ public class Inventory : MonoBehaviour
     public void SelectItem(int index)
     {
         selectedIndex = (index >= 0 && index < inv.Count) ? index : -1;
-        selectedItem = inv[selectedIndex];
         ui.Refresh();
     }
 }

@@ -34,7 +34,7 @@ public class UIInventory : MonoBehaviour
             slot.onClick.AddListener(() => Inventory.instance.SelectItem(index));
         }
 
-        itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.selectedItem.name : "";
+        itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].name : "";
 
         Inventory.instance.currentWeight = 0;
         foreach (var i in Inventory.instance.inv)
@@ -46,7 +46,7 @@ public class UIInventory : MonoBehaviour
     private void ClickDrop()
     {
         if (Inventory.instance.selectedIndex == -1) return;
-
+        
         GameObject.Find("Player").GetComponent<PlayerInteract>().DropItem();
         Inventory.instance.RemoveItemAt(Inventory.instance.selectedIndex);
         Refresh();

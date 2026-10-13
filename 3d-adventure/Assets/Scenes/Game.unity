@@ -4302,6 +4302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204a82d32570bc941b79e8f054b3b780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  range: 8
   head: {fileID: 970809952}
   itemDrop: {fileID: 2195153075479238259, guid: f895b40b21613da42a05a7b2480841da, type: 3}
 --- !u!1 &2131327261

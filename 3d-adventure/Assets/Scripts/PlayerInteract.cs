@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteract : MonoBehaviour
 {
+    [SerializeField] private float range;
     [SerializeField] private Transform head;
     [SerializeField] private GameObject itemDrop;
 
@@ -11,7 +12,7 @@ public class PlayerInteract : MonoBehaviour
         if (InputSystem.actions["Interact"].WasPressedThisFrame())
         {
             RaycastHit hit;
-            if (Physics.Raycast(head.position, head.forward, out hit, 60f))
+            if (Physics.Raycast(head.position, head.forward, out hit, range, ~(1 << gameObject.layer)))
             {
                 var itemDrop = hit.collider.GetComponent<ItemDrop>();
 
@@ -22,7 +23,16 @@ public class PlayerInteract : MonoBehaviour
 
     public void DropItem()
     {
-        var item = Instantiate(itemDrop, head.position, Quaternion.identity);
-        item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+        RaycastHit hit;
+        if (Physics.Raycast(head.position, head.forward, out hit, range / 2f, ~(1 << gameObject.layer)))
+        {
+            var item = Instantiate(itemDrop, hit.point, Quaternion.identity);
+            item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+        }
+        else
+        {
+            var item = Instantiate(itemDrop, head.position + head.forward * range / 2f, Quaternion.identity);
+            item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+        }
     }
 }
