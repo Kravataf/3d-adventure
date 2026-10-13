@@ -8,10 +8,10 @@ public class Equipped : MonoBehaviour
     private void Update()
     {
         equipped.text = "";
-        
+
         if (Inventory.instance.inv.Count <= 0) return;
         if (Inventory.instance.equippedIndex == -1) return;
 
-        equipped.text = Inventory.instance.inv[Inventory.instance.equippedIndex].name;
+        equipped.text = Inventory.instance.inv[Inventory.instance.equippedIndex].itemDescriptor.name;
     }
 }

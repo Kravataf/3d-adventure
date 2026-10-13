@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class ItemDrop : MonoBehaviour
 {
-    public Item item;
+    [SerializeField] private ItemDescriptor itemDescriptor;
+    private ItemInstance itemInstance;
+
+    public ItemInstance Instance => itemInstance ??= new ItemInstance(itemDescriptor);
+
+    public void Init(ItemInstance existing) => itemInstance = existing;
 
     public void CollectItem()
     {
-        bool hasCollected = Inventory.instance.AddItem(item);
-
-        if (hasCollected)
-        {
-            Destroy(gameObject);
-        }
+        if (Inventory.instance.AddItem(Instance)) Destroy(gameObject);
     }
 }

@@ -5,8 +5,8 @@ public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
 
-    public List<Item> inv = new();
-    public int currentWeight, maxWeight;
+    public List<ItemInstance> inv = new();
+    public float currentWeight, maxWeight;
 
     [HideInInspector] public int selectedIndex = -1, equippedIndex = -1;
 
@@ -17,11 +17,13 @@ public class Inventory : MonoBehaviour
         instance = this;
     }
 
-    public bool AddItem(Item i)
+    public bool AddItem(ItemDescriptor itemDescriptor) => AddItem(new ItemInstance(itemDescriptor));
+
+    public bool AddItem(ItemInstance itemInstance)
     {
-        if (currentWeight + i.weight <= maxWeight)
+        if (currentWeight + itemInstance.itemDescriptor.weight <= maxWeight)
         {
-            inv.Add(i);
+            inv.Add(itemInstance);
             ui.Refresh();
             return true;
         }
@@ -43,12 +45,4 @@ public class Inventory : MonoBehaviour
         selectedIndex = (index >= 0 && index < inv.Count) ? index : -1;
         ui.Refresh();
     }
-}
-
-[System.Serializable]
-public struct Item
-{
-    public string name;
-    public int weight;
-    public string description;
 }
