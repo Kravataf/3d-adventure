@@ -33,7 +33,7 @@ public class PlayerInteract : MonoBehaviour
         {
             spawn = head.position + head.forward * range / 2f;
         }
-        var item = Instantiate(itemDrop, spawn, Quaternion.identity);
-        item.GetComponent<ItemDrop>().item = Inventory.instance.inv[Inventory.instance.selectedIndex];
+        Instantiate(itemDrop, spawn, Quaternion.identity)
+        .GetComponent<ItemDrop>().Init(Inventory.instance.inv[Inventory.instance.selectedIndex]);
     }
 }

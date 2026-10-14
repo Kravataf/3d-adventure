@@ -30,7 +30,7 @@ public class UIInventory : MonoBehaviour
         {
             int index = i;
             var slot = Instantiate(itemSlot, itemList.transform);
-            slot.GetComponentInChildren<TMP_Text>().text = $"{Inventory.instance.inv[i].itemDescriptor.name} {Inventory.instance.inv[i].itemDescriptor.weight}kg";
+            slot.GetComponentInChildren<TMP_Text>().text = $"{Inventory.instance.inv[i].itemDescriptor.name} ({Inventory.instance.inv[i].itemDescriptor.rarity}) {Inventory.instance.inv[i].itemDescriptor.weight}kg";
             slot.onClick.AddListener(() => Inventory.instance.SelectItem(index));
         }
 

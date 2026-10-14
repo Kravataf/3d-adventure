@@ -105,10 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2ce019e48763ef469024c075bca6df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemDrop
-  item:
-    name: Trash
-    weight: 1
-    description: This item is useless
+  itemDescriptor: {fileID: 11400000, guid: 4044e50174c141c4ba5bfa160331dd00, type: 2}
 --- !u!65 &8796209004307934574
 BoxCollider:
   m_ObjectHideFlags: 0
