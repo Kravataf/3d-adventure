@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponDescriptor
   displayName: AK-47
   description: Pew
-  rarity: 1
+  rarity: 3
   weight: 3
   stateTemplate:
     rid: -2

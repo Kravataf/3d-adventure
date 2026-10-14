@@ -23,5 +23,6 @@ public enum Rarity
     SuperRare,
     Legendary,
     Mythic,
+    Godlike,
     Divine,
 }
