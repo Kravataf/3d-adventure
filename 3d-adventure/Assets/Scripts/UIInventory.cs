@@ -55,19 +55,21 @@ public class UIInventory : MonoBehaviour
 
         if (isRight)
         {
-            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexL)
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexL) // swap L/R
             {
                 Inventory.instance.equippedIndexL = Inventory.instance.equippedIndexR;
             }
-            Inventory.instance.equippedIndexR = Inventory.instance.selectedIndex;
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexR) Inventory.instance.equippedIndexR = -1; // toggle equip/unequip
+            else Inventory.instance.equippedIndexR = Inventory.instance.selectedIndex;
         }
         else
         {
-            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexR)
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexR) // swap L/R
             {
                 Inventory.instance.equippedIndexR = Inventory.instance.equippedIndexL;
             }
-            Inventory.instance.equippedIndexL = Inventory.instance.selectedIndex;
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexL) Inventory.instance.equippedIndexL = -1; // toggle equip/unequip
+            else Inventory.instance.equippedIndexL = Inventory.instance.selectedIndex;
         }
     }
 }
