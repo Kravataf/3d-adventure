@@ -5,7 +5,7 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] private Transform head;
-    [SerializeField] private GameObject itemDrop;
+    [SerializeField] private GameObject itemDrop, interactText;
 
     private void Update()
     {
@@ -17,15 +17,24 @@ public class PlayerInteract : MonoBehaviour
         {
         }
 
-        if (InputSystem.actions["Interact"].WasPressedThisFrame())
+        RaycastHit hit;
+        if (Physics.Raycast(head.position, head.forward, out hit, range, ~(1 << gameObject.layer)))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(head.position, head.forward, out hit, range, ~(1 << gameObject.layer)))
-            {
-                var itemDrop = hit.collider.GetComponent<ItemDrop>();
+            var itemDrop = hit.collider.GetComponent<ItemDrop>();
 
-                if (itemDrop) itemDrop.CollectItem();
+            interactText.SetActive(itemDrop);
+
+            if (itemDrop)
+            {
+                if (InputSystem.actions["Interact"].WasPressedThisFrame())
+                {
+                    itemDrop.CollectItem();
+                }
             }
+        }
+        else
+        {
+            interactText.SetActive(false);
         }
     }
 

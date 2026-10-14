@@ -4437,6 +4437,7 @@ MonoBehaviour:
   range: 8
   head: {fileID: 970809952}
   itemDrop: {fileID: 2195153075479238259, guid: f895b40b21613da42a05a7b2480841da, type: 3}
+  interactText: {fileID: 1492376304}
 --- !u!1 &2131327261
 GameObject:
   m_ObjectHideFlags: 0
