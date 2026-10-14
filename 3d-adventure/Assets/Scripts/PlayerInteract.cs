@@ -9,6 +9,14 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
+        if (InputSystem.actions["Primary"].WasPressedThisFrame())
+        {
+        }
+
+        if (InputSystem.actions["Secondary"].WasPressedThisFrame())
+        {
+        }
+
         if (InputSystem.actions["Interact"].WasPressedThisFrame())
         {
             RaycastHit hit;
