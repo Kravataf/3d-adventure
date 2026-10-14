@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
         else
         {
             Cursor.lockState = CursorLockMode.None;
-            if (InputSystem.actions["Attack"].WasPressedThisFrame())
+            if (InputSystem.actions["Primary"].WasPressedThisFrame())
             {
                 isPaused = false;
                 Cursor.lockState = CursorLockMode.Locked;
