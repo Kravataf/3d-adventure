@@ -8,7 +8,7 @@ public class Inventory : MonoBehaviour
     public List<ItemInstance> inv = new();
     public float currentWeight, maxWeight;
 
-    [HideInInspector] public int selectedIndex = -1, equippedIndex = -1;
+    [HideInInspector] public int selectedIndex = -1, equippedIndexL = -1, equippedIndexR = -1;
 
     [SerializeField] private UIInventory ui;
 
@@ -36,8 +36,8 @@ public class Inventory : MonoBehaviour
         inv.RemoveAt(index);
         if (index < selectedIndex) selectedIndex--;
         else if (index == selectedIndex) selectedIndex = Mathf.Min(selectedIndex, inv.Count - 1);
-        if (index < equippedIndex) equippedIndex--;
-        else if (index == equippedIndex) equippedIndex = -1;
+        if (index < equippedIndexR) equippedIndexR--;
+        else if (index == equippedIndexR) equippedIndexR = -1;
     }
 
     public void SelectItem(int index)

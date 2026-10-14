@@ -4,15 +4,9 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    [SerializeField] private Button itemSlot, drop, equip;
+    [SerializeField] private Button itemSlot;
     [SerializeField] private GameObject itemList;
     [SerializeField] private TMP_Text currentWeight, itemName, itemDescription;
-
-    private void Awake()
-    {
-        drop.onClick.AddListener(() => ClickDrop());
-        equip.onClick.AddListener(() => ClickEquip());
-    }
 
     private void Update()
     {
@@ -44,7 +38,7 @@ public class UIInventory : MonoBehaviour
         }
     }
 
-    private void ClickDrop()
+    public void ClickDrop()
     {
         if (Inventory.instance.selectedIndex == -1) return;
         if (Inventory.instance.inv.Count <= 0) return;
@@ -54,11 +48,26 @@ public class UIInventory : MonoBehaviour
         Refresh();
     }
 
-    private void ClickEquip()
+    public void ClickEquip(bool isRight)
     {
         if (Inventory.instance.selectedIndex == -1) return;
         if (Inventory.instance.inv.Count <= 0) return;
 
-        Inventory.instance.equippedIndex = Inventory.instance.selectedIndex;
+        if (isRight)
+        {
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexL)
+            {
+                Inventory.instance.equippedIndexL = Inventory.instance.equippedIndexR;
+            }
+            Inventory.instance.equippedIndexR = Inventory.instance.selectedIndex;
+        }
+        else
+        {
+            if (Inventory.instance.selectedIndex == Inventory.instance.equippedIndexR)
+            {
+                Inventory.instance.equippedIndexR = Inventory.instance.equippedIndexL;
+            }
+            Inventory.instance.equippedIndexL = Inventory.instance.selectedIndex;
+        }
     }
 }
