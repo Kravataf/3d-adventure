@@ -5,6 +5,8 @@ public class ItemDrop : MonoBehaviour, IInteractable
     [SerializeField] private ItemDescriptor itemDescriptor;
     private ItemInstance itemInstance;
 
+    [SerializeField] private GameObject particle;
+
     private void Start()
     {
         if (itemInstance == null) itemInstance = Instance;
@@ -16,6 +18,10 @@ public class ItemDrop : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        if (Inventory.instance.AddItem(Instance)) Destroy(gameObject);
+        if (Inventory.instance.AddItem(Instance))
+        {
+            Instantiate(particle, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
     }
 }

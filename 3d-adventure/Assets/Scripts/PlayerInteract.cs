@@ -5,18 +5,10 @@ public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float range;
     [SerializeField] private Transform head;
-    [SerializeField] private GameObject itemDrop, interactText;
+    [SerializeField] private GameObject interactText, itemDrop;
 
     private void Update()
     {
-        if (InputSystem.actions["Primary"].WasPressedThisFrame())
-        {
-        }
-
-        if (InputSystem.actions["Secondary"].WasPressedThisFrame())
-        {
-        }
-
         interactText.SetActive(false);
 
         RaycastHit hit;
@@ -25,13 +17,13 @@ public class PlayerInteract : MonoBehaviour
             var interactable = hit.collider.GetComponent<IInteractable>();
 
             if (interactable == null) return;
-            
+
             interactText.SetActive(true);
             if (InputSystem.actions["Interact"].WasPressedThisFrame()) interactable.Interact();
         }
     }
 
-    public void DropItem()
+    public void DropItem() // toto by som mal dat do ineho scriptu
     {
         Vector3 spawn;
         RaycastHit hit;
