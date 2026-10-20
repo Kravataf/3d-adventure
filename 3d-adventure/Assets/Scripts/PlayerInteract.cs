@@ -17,24 +17,17 @@ public class PlayerInteract : MonoBehaviour
         {
         }
 
+        interactText.SetActive(false);
+
         RaycastHit hit;
         if (Physics.Raycast(head.position, head.forward, out hit, range, ~(1 << gameObject.layer)))
         {
-            var itemDrop = hit.collider.GetComponent<ItemDrop>();
+            var interactable = hit.collider.GetComponent<IInteractable>();
 
-            interactText.SetActive(itemDrop);
-
-            if (itemDrop)
-            {
-                if (InputSystem.actions["Interact"].WasPressedThisFrame())
-                {
-                    itemDrop.CollectItem();
-                }
-            }
-        }
-        else
-        {
-            interactText.SetActive(false);
+            if (interactable == null) return;
+            
+            interactText.SetActive(true);
+            if (InputSystem.actions["Interact"].WasPressedThisFrame()) interactable.Interact();
         }
     }
 

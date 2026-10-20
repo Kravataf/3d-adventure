@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+public class ItemDrop : MonoBehaviour, IInteractable
 {
     [SerializeField] private ItemDescriptor itemDescriptor;
     private ItemInstance itemInstance;
@@ -14,7 +14,7 @@ public class ItemDrop : MonoBehaviour
 
     public void Init(ItemInstance existing) => itemInstance = existing;
 
-    public void CollectItem()
+    public void Interact()
     {
         if (Inventory.instance.AddItem(Instance)) Destroy(gameObject);
     }
