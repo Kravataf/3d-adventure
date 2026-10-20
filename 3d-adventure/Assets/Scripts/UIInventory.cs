@@ -29,9 +29,12 @@ public class UIInventory : MonoBehaviour
             slot.onClick.AddListener(() => Inventory.instance.SelectItem(index));
         }
 
-        itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.name : "";
-        itemName.color = Inventory.instance.rarityColor[Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.rarity];
-        itemDescription.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.description : "";
+        if (Inventory.instance.selectedIndex != -1 && Inventory.instance.inv.Count > 0)
+        {
+            itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.name : "";
+            itemName.color = Inventory.instance.rarityColor[Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.rarity];
+            itemDescription.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.description : "";
+        }
 
         Inventory.instance.currentWeight = 0;
         foreach (var i in Inventory.instance.inv)
