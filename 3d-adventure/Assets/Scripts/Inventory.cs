@@ -9,8 +9,20 @@ public class Inventory : MonoBehaviour
     public float currentWeight, maxWeight;
 
     [HideInInspector] public int selectedIndex = -1, equippedIndexL = -1, equippedIndexR = -1;
-
     [SerializeField] private UIInventory ui;
+
+    [HideInInspector] public Dictionary<Rarity, Color> rarityColor = new Dictionary<Rarity, Color>
+    {
+        { Rarity.Abundant,  Color.black  },
+        { Rarity.Common,    Color.gray   },
+        { Rarity.Uncommon,  Color.green  },
+        { Rarity.Rare,      Color.blue   },
+        { Rarity.SuperRare, Color.purple },
+        { Rarity.Legendary, Color.yellow },
+        { Rarity.Mythic,    Color.red    },
+        { Rarity.Godlike,   Color.pink   },
+        { Rarity.Divine,    Color.white  }
+    };
 
     private void Awake()
     {

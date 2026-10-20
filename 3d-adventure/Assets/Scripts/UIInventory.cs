@@ -25,10 +25,12 @@ public class UIInventory : MonoBehaviour
             int index = i;
             var slot = Instantiate(itemSlot, itemList.transform);
             slot.GetComponentInChildren<TMP_Text>().text = $"{Inventory.instance.inv[i].itemDescriptor.name} ({Inventory.instance.inv[i].itemDescriptor.rarity}) {Inventory.instance.inv[i].itemDescriptor.weight}kg";
+            slot.GetComponentInChildren<TMP_Text>().color = Inventory.instance.rarityColor[Inventory.instance.inv[i].itemDescriptor.rarity];
             slot.onClick.AddListener(() => Inventory.instance.SelectItem(index));
         }
 
         itemName.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.name : "";
+        itemName.color = Inventory.instance.rarityColor[Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.rarity];
         itemDescription.text = Inventory.instance.selectedIndex > -1 ? Inventory.instance.inv[Inventory.instance.selectedIndex].itemDescriptor.description : "";
 
         Inventory.instance.currentWeight = 0;
