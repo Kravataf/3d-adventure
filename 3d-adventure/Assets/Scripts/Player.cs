@@ -1,5 +1,6 @@
 using UnityEngine;
 
-public class Player : Entity
+public class Player : Entity, IDamageable
 {
+    public void TakeDamage(int amount) => currentHealth -= amount;
 }
