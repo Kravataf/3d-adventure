@@ -7,17 +7,18 @@ public class PlayerUse : MonoBehaviour
 
     private void Update()
     {
-        if (InputSystem.actions["RightHand"].WasPressedThisFrame())
-        {
-            if (Inventory.instance.equippedIndexR == -1 || Inventory.instance.inv.Count <= 0) return;
-            Use(Inventory.instance.inv[Inventory.instance.equippedIndexR]);
-        }
+        var inventory = Inventory.instance;
 
-        if (InputSystem.actions["LeftHand"].WasPressedThisFrame())
-        {
-            if (Inventory.instance.equippedIndexL == -1 || Inventory.instance.inv.Count <= 0) return;
-            Use(Inventory.instance.inv[Inventory.instance.equippedIndexL]);
-        }
+        if (InputSystem.actions["RightHand"].WasPressedThisFrame()) TryUse(inventory.equippedIndexR);
+        if (InputSystem.actions["LeftHand"].WasPressedThisFrame()) TryUse(inventory.equippedIndexL);
+    }
+
+    private void TryUse(int index)
+    {
+        var inv = Inventory.instance.inv;
+        if (index < 0 || index >= inv.Count) return;
+
+        Use(inv[index]);
     }
 
     private void Use(ItemInstance item)
@@ -27,13 +28,12 @@ public class PlayerUse : MonoBehaviour
             case WeaponDescriptor weapon when item.state is WeaponItemSlotState ammo:
                 if (ammo.TryConsume(1))
                 {
-                    print("shot");
+                    print($"shot ({ammo.AmmoCount} / {weapon.MagazineSize})");
                     RaycastHit hit;
                     if (Physics.Raycast(head.position, head.forward, out hit, 60f, ~(1 << gameObject.layer)))
                     {
                         print("hit");
-                        hit.collider.TryGetComponent<IDamageable>(out var damageable);
-                        if (damageable != null) damageable.TakeDamage(weapon.Damage);
+                        if (hit.collider.TryGetComponent<IDamageable>(out var damageable)) damageable.TakeDamage(weapon.Damage);
                     }
                 }
                 else
