@@ -13,7 +13,6 @@ public class WeaponItemSlotState : ItemSlotState
     public int AmmoCount => ammoCount;
 
     public WeaponItemSlotState() {}
-
     public WeaponItemSlotState(int startingAmmo) => ammoCount = Mathf.Max(0, startingAmmo);
 
     public bool TryConsume(int amount)
