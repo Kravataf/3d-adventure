@@ -189,3 +189,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   maxHealth: 30
   currentHealth: 30
+  particleBlood: {fileID: 7705914743355675318, guid: b98421189ad211b4e912cc5e7282da82, type: 3}

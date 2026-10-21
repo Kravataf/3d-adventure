@@ -5,6 +5,7 @@ public class NPC : Entity, IDamageable, IInteractable
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
+        Instantiate(particleBlood, transform.position, Quaternion.identity);
         if (currentHealth <= 0) Death();
     }
     

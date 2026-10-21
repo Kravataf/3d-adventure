@@ -10,7 +10,7 @@ public class Equipped : MonoBehaviour
         var inventory = Inventory.instance;
         var inv = inventory.inv;
 
-        equipped.text = $"<< {Describe(inventory.equippedIndexL)} << >> {Describe(inventory.equippedIndexR)} >>";
+        equipped.text = $"<< {Describe(inventory.equippedIndexL)} << | >> {Describe(inventory.equippedIndexR)} >>";
 
         if (inv.Count <= 0) return;
     }
@@ -18,7 +18,7 @@ public class Equipped : MonoBehaviour
     private string Describe(int index)
     {
         var inv = Inventory.instance.inv;
-        if (index < 0 || index >= inv.Count) return "--";
+        if (index < 0 || index >= inv.Count) return "?";
 
         var desc = inv[index].itemDescriptor;
 
