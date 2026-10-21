@@ -10,7 +10,7 @@ public class Equipped : MonoBehaviour
         var inventory = Inventory.instance;
         var inv = inventory.inv;
 
-        equipped.text = $"L {Describe(inventory.equippedIndexL)} R {Describe(inventory.equippedIndexR)}";
+        equipped.text = $"<< {Describe(inventory.equippedIndexL)} << >> {Describe(inventory.equippedIndexR)} >>";
 
         if (inv.Count <= 0) return;
     }
@@ -33,7 +33,7 @@ public class Equipped : MonoBehaviour
                 extra = "";
             break;
         }
-        
+
         return $"{desc.displayName} ({desc.rarity}) {extra}";
     }
 }
