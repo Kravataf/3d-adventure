@@ -41,13 +41,25 @@ public class UIManager : MonoBehaviour
                 }
             }
 
+            if (InputSystem.actions["Quests"].WasPressedThisFrame())
+            {
+                if (currentState == State.Quests)
+                {
+                    SetState(State.Focus);
+                }
+                else
+                {
+                    SetState(State.Quests);
+                }
+            }
+
             switch (currentState)
             {
                 case State.Focus:
                     Cursor.lockState = CursorLockMode.Locked;
                 break;
 
-                case State.Inventory:
+                default:
                     Cursor.lockState = CursorLockMode.None;
                 break;
             }
@@ -77,7 +89,8 @@ public class UIManager : MonoBehaviour
 public enum State
 {
     Focus,
-    Inventory
+    Inventory,
+    Quests
 }
 
 [System.Serializable]
