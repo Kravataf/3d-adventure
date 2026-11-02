@@ -1617,8 +1617,8 @@ RectTransform:
   - {fileID: 473472452}
   m_Father: {fileID: 1830056478}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchorMin: {x: 0.25, y: 0}
+  m_AnchorMax: {x: 0.75, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3347,6 +3347,7 @@ GameObject:
   - component: {fileID: 1376569141}
   - component: {fileID: 1376569142}
   - component: {fileID: 1376569143}
+  - component: {fileID: 1376569144}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3413,6 +3414,20 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1376569144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376569140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720b54dcfe14a6e4ca9a5a280398f9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestManager
+  startingQuests:
+  - {fileID: 11400000, guid: 4f197cee7b3be374f98bf3538db9e461, type: 2}
 --- !u!1 &1400738266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4266,7 +4281,7 @@ GameObject:
   - component: {fileID: 1830056477}
   - component: {fileID: 1830056476}
   - component: {fileID: 1830056475}
-  - component: {fileID: 1830056474}
+  - component: {fileID: 1830056479}
   m_Layer: 5
   m_Name: CanvasQuests
   m_TagString: Untagged
@@ -4274,23 +4289,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1830056474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830056473}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32bb749ea00218046a9eb663bc81be13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIInventory
-  itemSlot: {fileID: 5660968286915855532, guid: 8f64579d2d498534caa4de286abe3f04, type: 3}
-  itemList: {fileID: 1376411531}
-  currentWeight: {fileID: 0}
-  itemName: {fileID: 0}
-  itemDescription: {fileID: 0}
 --- !u!114 &1830056475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4374,6 +4372,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1830056479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830056473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b5662201dffb6144b6686c555bee383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIQuests
+  questPrefab: {fileID: 1586383359826157030, guid: a67a3a274cfef9343bfc09699284fa33, type: 3}
+  questLog: {fileID: 1376411534}
 --- !u!1001 &1850466665
 PrefabInstance:
   m_ObjectHideFlags: 0

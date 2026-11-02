@@ -6,12 +6,16 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
 
-    public Action<Quest> onQuestStarted, onQuestUpdated, onQuestCompleted;
+    public static Action<Quest> onQuestStarted, onQuestUpdated, onQuestCompleted;
     readonly List<Quest> active = new();
-    IReadOnlyList<Quest> Active => active;
+    public IReadOnlyList<Quest> Active => active;
     readonly HashSet<QuestDescriptor> completed = new();
 
-    List<QuestDescriptor> startingQuests = new();
+    public static void RaiseQuestStarted(Quest quest) => onQuestStarted?.Invoke(quest);
+    public static void RaiseQuestUpdated(Quest quest) => onQuestUpdated?.Invoke(quest);
+    public static void RaiseQuestCompleted(Quest quest) => onQuestCompleted?.Invoke(quest);
+
+    [SerializeField] private List<QuestDescriptor> startingQuests = new();
 
     private void Awake() => instance = this;
 
@@ -20,7 +24,11 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var q in startingQuests) StartQuest(q);
+        foreach (var q in startingQuests)
+        {
+            StartQuest(q);
+            print(q.title);
+        }
     }
 
     public bool StartQuest(QuestDescriptor questDescriptor)
