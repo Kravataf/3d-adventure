@@ -27,7 +27,6 @@ public class QuestManager : MonoBehaviour
         foreach (var q in startingQuests)
         {
             StartQuest(q);
-            print(q.title);
         }
     }
 
@@ -43,7 +42,7 @@ public class QuestManager : MonoBehaviour
         return true;
     }
 
-    private void HandleCollected(string item, int amount)
+    public void HandleCollected(string item, int amount)
     {
         for (int i = active.Count - 1; i >= 0; i--)
         {

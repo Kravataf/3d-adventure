@@ -38,7 +38,7 @@ public class UIQuests : MonoBehaviour
 
             title.text = quest.questDescriptor.title;
             progress.text = $"{quest.progress}/{quest.questDescriptor.goal} {quest.questDescriptor.target}";
-            progress.text += $"\n{quest.questDescriptor.description}";
+            progress.text += $"\n\n{quest.questDescriptor.description}";
         }
     }
 
@@ -59,7 +59,7 @@ public class UIQuests : MonoBehaviour
 
             title.text = quest.questDescriptor.title;
             progress.text = $"{quest.progress}/{quest.questDescriptor.goal} {quest.questDescriptor.target}";
-            progress.text += $"\n{quest.questDescriptor.description}";
+            progress.text += $"\n\n{quest.questDescriptor.description}";
         }
     }
 

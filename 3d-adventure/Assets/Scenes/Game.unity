@@ -3428,6 +3428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestManager
   startingQuests:
   - {fileID: 11400000, guid: 4f197cee7b3be374f98bf3538db9e461, type: 2}
+  - {fileID: 11400000, guid: 0b5fc6c9985e6444a8a1b50614d525d0, type: 2}
 --- !u!1 &1400738266
 GameObject:
   m_ObjectHideFlags: 0

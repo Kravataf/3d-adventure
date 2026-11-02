@@ -21,6 +21,7 @@ public class ItemDrop : MonoBehaviour, IInteractable
         if (Inventory.instance.AddItem(Instance))
         {
             Instantiate(particle, transform.position, Quaternion.identity);
+            QuestManager.instance.HandleCollected($"{itemDescriptor.name} ({itemDescriptor.rarity})", 1);
             Destroy(gameObject);
         }
     }
